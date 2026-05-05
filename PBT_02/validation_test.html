@@ -1,0 +1,39 @@
+Trường hợp 1
+<input type="text" required value="">
+Không submit được
+required bắt buộc phải nhập dữ liệu
+value="" nghĩa là input đang rỗng
+Trình duyệt sẽ báo lỗi kiểu: "Please fill out this field"
+
+Trường hợp 2
+<input type="email" value="abc">
+Không submit
+type="email" yêu cầu đúng định dạng email
+Email hợp lệ phải có dạng: text@domain
+"abc" không có @ → invalid format
+Browser tự validate mà không cần JS
+
+Trường hợp 3
+<input type="number" min="1" max="10" value="15">
+Không submit
+Giá trị hợp lệ phải nằm trong [1 → 10]
+User nhập 15 → vượt quá max="10"
+Trình duyệt báo lỗi: "Value must be less than or equal to 10"
+
+Trường hợp 4
+<input type="text" pattern="[0-9]{10}" value="abc123">
+Không submit
+pattern="[0-9]{10}" nghĩa là:
+Chỉ chứa số (0-9)
+Đúng 10 chữ số
+"abc123":
+Có chữ cái 
+Không đủ 10 ký tự 
+→ Không match regex → fail validation
+
+Trường hợp 5
+<input type="password" minlength="8" value="123">
+Không submit
+minlength="8" yêu cầu tối thiểu 8 ký tự
+"123" chỉ có 3 ký tự
+→ Không đạt độ dài → bị chặn submit
