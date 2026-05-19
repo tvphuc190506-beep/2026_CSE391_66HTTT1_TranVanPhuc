@@ -1,0 +1,82 @@
+/* 1. Dòng đầu tiên reset box-sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* 2. Style cho Body (Sử dụng Tag Selector) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 3. Header (Sử dụng Class Selector) */
+.profile-header {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    color: white;
+    padding: 30px 20px; /* padding ít nhất 20px */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* 4. Navigation links (Sử dụng Descendant và Pseudo-class Selector) */
+nav a {
+    text-decoration: none; /* Mặc định không gạch chân */
+    color: #007bff;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff5722; /* Đổi màu */
+    text-decoration: underline; /* Gạch chân khi hover */
+}
+
+nav a.active {
+    color: #28a745; /* Link đang active kiểu khác biệt */
+    border-bottom: 2px solid #28a745;
+}
+
+/* 5. Table kỹ năng (Sử dụng Element, ID, và Pseudo-class) */
+#skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+#skills-table th, #skills-table td {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+/* Header row */
+#skills-table th {
+    background-color: #343a40; /* Nền đậm */
+    color: white;
+}
+
+/* Zebra striping (hàng chẵn) */
+#skills-table tr:nth-child(even) {
+    background-color: #f1f3f5;
+}
+
+/* Hover row */
+#skills-table tr:hover {
+    background-color: #e9ecef;
+}
+
+/* 6. Footer */
+footer {
+    background-color: #212529;
+    color: #adb5bd; /* Text nhạt */
+    text-align: center;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 30px;
+}
