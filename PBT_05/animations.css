@@ -1,0 +1,165 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f4f8;
+    padding: 40px 20px;
+}
+
+.animation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #234e70;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.card-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+/* =======================================================
+   HIỆU ỨNG 1: Card Hover Effect (Nâng lên & Đổ bóng tăng)
+   ======================================================= */
+.anim-card {
+    width: 280px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    
+    /* Khai báo chuyển động mượt cho mọi thuộc tính thay đổi */
+    transition: all 0.3s ease;
+}
+
+.anim-card:hover {
+    transform: translateY(-8px); /* Trượt nhẹ lên trên 8px */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Bóng đổ dầy đậm hơn */
+}
+
+/* =======================================================
+   HIỆU ỨNG 3: Image Zoom (Phóng to tầm nhìn ảnh bên trong)
+   ======================================================= */
+.image-box {
+    width: 100%;
+    height: 180px;
+    overflow: hidden; /* Cực kỳ quan trọng: Giữ ảnh không tràn viền ra ngoài khi zoom */
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cài đặt thời gian biến đổi mượt khi hover */
+    transition: transform 0.3s ease;
+}
+
+.anim-card:hover .image-box img {
+    transform: scale(1.1); /* Phóng to nhẹ ảnh lên kích thước 110% */
+}
+
+.info {
+    padding: 15px;
+}
+.info h4 { margin-bottom: 8px; color: #333; }
+.info p { font-size: 13px; color: #666; margin-bottom: 15px; line-height: 1.4; }
+
+/* =======================================================
+   HIỆU ỨNG 2: Button Hover (Đổi màu mượt mà + Nhích scale)
+   ======================================================= */
+.btn-anim {
+    width: 100%;
+    padding: 10px;
+    background-color: #234e70;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    
+    /* Chuyển đổi màu sắc mượt */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-anim:hover {
+    background-color: #fbf6ef; /* Đổi màu nền sang vàng nhạt mượt mà */
+    color: #234e70;            /* Đổi màu chữ chữ sang xanh đậm */
+    transform: scale(1.05);     /* Phóng nhẹ nút bấm lớn lên 1.05 lần */
+}
+
+/* Khu vực hàng dưới */
+.extra-animations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 30px;
+}
+
+.spinner-section, .fade-section {
+    font-weight: bold;
+    color: #4a5568;
+}
+
+/* =======================================================
+   HIỆU ỨNG 4: Loading Spinner (Vòng tròn xoay tròn vô tận)
+   ======================================================= */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;       /* Khung đường tròn mờ lót dưới */
+    border-top: 4px solid #234e70;   /* Khối màu xanh đậm tạo điểm nhấn */
+    border-radius: 50%;             /* Bo tròn tuyệt đối tạo hình cầu */
+    margin-top: 15px;
+    
+    /* Gắn bộ khung xoay chạy tuần hoàn liên tục không dừng */
+    animation: spin 1s linear infinite;
+}
+
+/* Định nghĩa trục xoay 360 độ bằng @keyframes */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =======================================================
+   HIỆU ỨNG 5: Fade-in khi tải trang (Trượt hiện mờ ảo)
+   ======================================================= */
+.fade-in-box {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #edf2f7;
+    border-left: 4px solid #3182ce;
+    font-weight: normal;
+    font-size: 13px;
+    
+    /* Gọi tên khung chuyển động trượt mờ */
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+/* Thiết lập lộ trình: Từ trong suốt và tụt dưới 20px -> Hiện rõ và đẩy thẳng vị trí gốc */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

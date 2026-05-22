@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Sinh Viên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 30px;
+        }
+
+     
+        .btn-mo-form {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        dialog {
+            width: 450px;
+            border: 2px solid #1c5275; 
+            border-radius: 4px;
+            padding: 0; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+    
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .btn-nut-x {
+            background: none;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 0 20px 20px 20px;
+        }
+
+        .btn-dong {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-luu {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-mo-form" id="btnMo">Thêm sinh viên</button>
+
+    <table>
+        <tr>
+            <th>Mã SV</th>
+            <th>Tên Sinh viên</th>
+            <th>Email</th>
+            <th>Lớp</th>
+            <th>Hành động</th>
+        </tr>
+        <tr>
+            <td>SV001</td>
+            <td>Nguyễn Văn A</td>
+            <td>sv1@gmail.com</td>
+            <td>66CNTT1</td>
+            <td>
+                <button onclick="suaSinhVien('SV001', 'Nguyễn Văn A', 'sv1@gmail.com', '0123456789', '123456', '66CNTT1')">Sửa</button>
+                
+                <button onclick="xoaSinhVien('SV001')">Xóa</button>
+            </td>
+        </tr>
+          <tr>
+            <td>SV002</td>
+            <td>Nguyễn Văn B</td>
+            <td>sv2@gmail.com</td>
+            <td>66TTNT1</td>
+            <td>
+                <button onclick="suaSinhVien('SV002', 'Nguyễn Văn B', 'sv2@gmail.com', '012345678', '12345', '66TTNT1')">Sửa</button>
+                
+                <button onclick="xoaSinhVien('SV002')">Xóa</button>
+            </td>
+        </tr>
+          <tr>
+            <td>SV003</td>
+            <td>Nguyễn Văn C</td>
+            <td>sv3@gmail.com</td>
+            <td>66HTTT1</td>
+            <td>
+                <button onclick="suaSinhVien('SV003', 'Nguyễn Văn C', 'sv3@gmail.com', '01234567', '1234', '66HTTT1')">Sửa</button>
+                
+                <button onclick="xoaSinhVien('SV003')">Xóa</button>
+            </td>
+        </tr>
+          <tr>
+            <td>SV004</td>
+            <td>Nguyễn Văn D</td>
+            <td>sv4@gmail.com</td>
+            <td>66ANM1</td>
+            <td>
+                <button onclick="suaSinhVien('SV004', 'Nguyễn Văn D', 'sv4@gmail.com', '0123456', '123', '66ANM1')">Sửa</button>
+                
+                <button onclick="xoaSinhVien('SV004')">Xóa</button>
+            </td>
+    </table>
+
+
+    <dialog id="popupSinhVien">
+        
+        <div class="modal-header">
+            <h3 id="tieuDeForm">Thêm/Sửa Sinh Viên</h3>
+            <button class="btn-nut-x" id="btnX">×</button>
+        </div>
+
+        <div class="modal-body">
+            <form id="formSinhVien">
+                
+                <input type="hidden" id="cheDo" value="them">
+
+                <div class="form-group">
+                    <label>Mã số sinh viên</label>
+                    <input type="text" id="inpMa" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tên Sinh viên</label>
+                    <input type="text" id="inpTen" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="inpEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Điện thoại</label>
+                    <input type="tel" id="inpSdt">
+                </div>
+
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="inpMatKhau">
+                </div>
+
+                <div class="form-group">
+                    <label>Lớp học</label>
+                    <select id="inpLop">
+                        <option value="66CNTT1">66CNTT1</option>
+                        <option value="66CNTT2">66CNTT2</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-dong" id="btnDong">Đóng</button>
+            
+            <button class="btn-luu" type="submit" form="formSinhVien">Lưu</button>
+        </div>
+
+    </dialog>
+
+
+    <script>
+        var popup = document.getElementById('popupSinhVien');
+        var form = document.getElementById('formSinhVien');
+        
+        var btnMo = document.getElementById('btnMo');
+        var btnDong = document.getElementById('btnDong');
+        var btnX = document.getElementById('btnX');
+        
+        var tieuDeForm = document.getElementById('tieuDeForm');
+        var cheDo = document.getElementById('cheDo');
+
+        var inpMa = document.getElementById('inpMa');
+        var inpTen = document.getElementById('inpTen');
+        var inpEmail = document.getElementById('inpEmail');
+        var inpSdt = document.getElementById('inpSdt');
+        var inpMatKhau = document.getElementById('inpMatKhau');
+        var inpLop = document.getElementById('inpLop');
+
+
+        btnMo.onclick = function() {
+            cheDo.value = "them"; 
+            tieuDeForm.innerText = "Thêm Sinh Viên Mới";
+            form.reset(); 
+            inpMa.disabled = false; 
+            popup.showModal(); 
+        }
+        btnDong.onclick = function() { popup.close(); }
+        btnX.onclick = function() { popup.close(); }
+
+
+  
+        form.onsubmit = function(event) {
+            event.preventDefault();
+
+     
+            var data = "Mã: " + inpMa.value + "\nTên: " + inpTen.value + "\nLớp: " + inpLop.value;
+
+            if (cheDo.value === "them") {
+               
+                alert("Thực hiện [SỰ KIỆN 3] - THÊM SINH VIÊN THÀNH CÔNG:\n" + data);
+            } else {
+                
+                alert("Thực hiện [SỰ KIỆN 5] - CẬP NHẬT DỮ LIỆU THÀNH CÔNG:\n" + data);
+            }
+
+            popup.close();
+        }
+
+
+        
+        function suaSinhVien(ma, ten, email, sdt, matkhau, lop) {
+            cheDo.value = "sua";
+            tieuDeForm.innerText = "Chỉnh Sửa Thông Tin Sinh Viên";
+
+            
+            inpMa.value = ma;
+            inpMa.disabled = true; 
+            inpTen.value = ten;
+            inpEmail.value = email;
+            inpSdt.value = sdt;
+            inpMatKhau.value = matkhau;
+            inpLop.value = lop;
+
+            popup.showModal(); 
+        }
+        function xoaSinhVien(maSV) {
+            var xacNhan = confirm("Bạn có chắc chắn muốn XÓA sinh viên có mã " + maSV + " không?");
+            if (xacNhan === true) {
+                alert("Thực hiện [SỰ KIỆN 6] - XÓA thành công sinh viên: " + maSV);
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài B1 - Positioning Playground</title>
+    <link rel="stylesheet" href="positioning.css">
+</head>
+<body>
+
+    <header class="fixed-header">
+        <div class="logo">MYLOGO</div>
+        <nav class="nav-links">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <div class="page-layout">
+        <aside class="sticky-sidebar">
+            <h3>Danh mục</h3>
+            <ul>
+                <li><a href="#">Điện thoại</a></li>
+                <li><a href="#">Máy tính bảng</a></li>
+                <li><a href="#">Phụ kiện công nghệ</a></li>
+                <li><a href="#">Thiết bị thông minh</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2>Khu vực trưng bày sản phẩm</h2>
+            <p>Cuộn trang xuống bên dưới để thấy Sidebar dính (Sticky) và Nút cuộn lên đầu trang (Fixed) hoạt động rõ ràng hơn.</p>
+            
+            <div class="product-card">
+                <span class="badge-hot">HOT</span>
+                <div class="card-img-placeholder">Ảnh Sản Phẩm</div>
+                <div class="card-info">
+                    <h4>iPhone 15 Pro Max</h4>
+                    <p>Giá: 29.990.000đ</p>
+                </div>
+            </div>
+
+            <div class="dummy-text">
+                <p>Nội dung giả lập tăng độ dài trang...</p>
+                <div class="spacer"></div>
+                <p>Tiếp tục cuộn xuống để trải nghiệm tính năng position sticky...</p>
+                <div class="spacer"></div>
+                <p>Bạn đã cuộn xuống cuối trang! Thử click nút mũi tên ở góc phải dưới xem sao.</p>
+            </div>
+        </main>
+    </div>
+
+    <button class="scroll-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+</body>
+</html>

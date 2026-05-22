@@ -1,0 +1,185 @@
+/* Khởi tạo cấu hình Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* =======================================================
+   1. CSS MẶC ĐỊNH DÀNH CHO MOBILE (Màn hình < 768px)
+   ======================================================= */
+body {
+    background-color: #f7fafc;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2d3748;
+    color: white;
+    padding: 15px 20px;
+}
+
+.main-header .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Hiện nút 3 gạch hamburger trên mobile */
+.hamburger-menu {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Ẩn thanh menu chữ truyền thống trên mobile */
+.nav-links {
+    display: none;
+}
+
+/* Khung bọc cấu trúc đổi về flex đứng dọc */
+.layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+}
+
+/* Ẩn bớt sidebar lọc và cột quảng cáo nặng nề trên mobile */
+.sidebar-filter, .ads-bar {
+    display: none;
+}
+
+.content-products h2 {
+    font-size: 16px; /* Font nhỏ gọn trên mobile */
+    margin-bottom: 15px;
+    color: #2d3748;
+}
+
+/* Lưới sản phẩm co về chuẩn 1 cột dọc trên Mobile */
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.product-item {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+}
+
+/* Ảnh responsive co dãn linh hoạt */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.product-item h4 {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.product-item .price {
+    color: #e53e3e;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.main-footer {
+    background-color: #2d3748;
+    color: #a0aec0;
+    text-align: center;
+    padding: 15px;
+    font-size: 11px;
+    margin-top: 20px;
+}
+
+/* =======================================================
+   2. TABLET BREAKPOINT (Áp dụng từ màn hình >= 768px)
+   ======================================================= */
+@media (min-width: 768px) {
+    /* Ẩn nút hamburger, hiện thanh menu ngang gọn */
+    .hamburger-menu {
+        display: none;
+    }
+    .nav-links {
+        display: flex;
+        gap: 15px;
+    }
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    /* Cho phép sidebar lọc xuất hiện dạng thanh ngang bên dưới header */
+    .sidebar-filter {
+        display: block;
+        background-color: #ffffff;
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .content-products h2 {
+        font-size: 18px; /* Tăng cỡ chữ lên */
+    }
+
+    /* Nâng lưới hiển thị sản phẩm lên thành 2 cột đều nhau */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =======================================================
+   3. DESKTOP BREAKPOINT (Áp dụng từ màn hình >= 1024px)
+   ======================================================= */
+@media (min-width: 1024px) {
+    /* Trả lại bố trúc sắp xếp 3 cột lớn nằm ngang */
+    .layout-wrapper {
+        flex-direction: row;
+        max-width: 1200px;
+        margin: 20px auto;
+    }
+
+    /* Thiết lập độ rộng cột cho từng phân vùng xương sườn */
+    .sidebar-filter {
+        width: 230px;
+        flex-shrink: 0;
+    }
+    .content-products {
+        flex: 1;
+    }
+    /* Hiện lại cột quảng cáo bên lề phải */
+    .ads-bar {
+        display: block;
+        width: 200px;
+        flex-shrink: 0;
+    }
+    .ad-banner {
+        background-color: #feebc8;
+        border: 1px dashed #dd6b20;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #dd6b20;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+
+    /* Đạt mục tiêu yêu cầu đề bài: Lưới hiển thị tối đa 4 cột sản phẩm trên hàng */
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .main-footer {
+        font-size: 13px;
+    }
+}

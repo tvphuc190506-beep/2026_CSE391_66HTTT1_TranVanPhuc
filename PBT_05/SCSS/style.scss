@@ -1,0 +1,32 @@
+
+@import 'variables';
+@import 'mixins';
+@import 'components';
+
+
+body {
+    margin: 0;
+    padding: $spacing-lg;
+    background-color: #f7fafc;
+    color: $text-dark;
+}
+
+.main-title {
+    color: $primary-color;
+    margin-bottom: $spacing-md;
+}
+
+
+.products-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+
+    @include respond-to($breakpoint-tablet) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to($breakpoint-desktop) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
