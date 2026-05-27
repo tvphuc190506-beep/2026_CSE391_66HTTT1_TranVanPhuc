@@ -1,0 +1,53 @@
+.skills-section {
+  padding: 5rem 0;
+  background-color: var(--color-light);
+}
+
+.skills-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--color-dark);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns trên desktop */
+  gap: 2rem 3rem;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.skill-bar {
+  background: #e2e8f0;
+  height: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.skill-progress {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  height: 100%;
+  width: 0; /* Bắt đầu từ 0 để thực hiện animation */
+  transition: width 1s ease-out;
+  border-radius: 10px;
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr; /* 1 column trên mobile */
+  }
+}

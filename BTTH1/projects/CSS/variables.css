@@ -1,0 +1,8 @@
+:root {
+    --primary-color: #39db34;
+    --dark-color: #362c50;
+    --light-color: #ffffff;
+    --accent-color: #e74c3c;
+    --bg-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    --transition: all 0.3s ease;
+}

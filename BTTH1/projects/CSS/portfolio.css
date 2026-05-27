@@ -1,0 +1,154 @@
+/* --- Bố cục tổng quan Portfolio --- */
+.portfolio-section {
+  padding: 5rem 0;
+}
+
+.portfolio-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-dark);
+}
+
+/* --- Bộ nút Lọc (Filter Buttons) --- */
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* --- Lưới Portfolio (Grid Layout & Responsive) --- */
+.portfolio-grid {
+  display: grid;
+  /* Dùng auto-fill minmax đảm bảo tự động co giãn 3/2/1 cột chuẩn chỉ */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- Hiệu ứng Thẻ Project (Zoom + Overlay) --- */
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.lightbox-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.1); /* Zoom ảnh khi hover */
+}
+
+/* Lớp phủ đen gradient chứa chữ */
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30, 41, 59, 0.95) 0%, rgba(30, 41, 59, 0.6) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1; /* Hiện overlay khi hover */
+}
+
+.portfolio-overlay h3 {
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.portfolio-overlay p {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ==================== CSS-ONLY LIGHTBOX ==================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+
+/* Khi người dùng click vào link có hash trùng với ID lightbox (ví dụ #lightbox-1) */
+.lightbox:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  /* Hiệu ứng trượt nhẹ ảnh lên khi mở lightbox */
+  transform: translateY(20px);
+  transition: transform 0.3s ease 0.1s;
+}
+
+.lightbox:target img {
+  transform: translateY(0);
+}
+
+/* Nút tắt Lightbox (Dấu X) */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  color: white;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 2001;
+}
+
+.lightbox-close:hover {
+  color: var(--color-primary);
+}
