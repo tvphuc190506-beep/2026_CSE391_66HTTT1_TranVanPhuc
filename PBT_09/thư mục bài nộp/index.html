@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài B1 - Ứng dụng Todo App hoàn chỉnh</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="todo-wrapper">
+        <h2>Danh sách việc cần làm</h2>
+        
+        <!-- Form nhập dữ liệu công việc -->
+        <form id="todoForm">
+            <input type="text" id="todoInput" placeholder="Nhập công việc mới và nhấn Enter..." required>
+            <button type="submit">Thêm</button>
+        </form>
+
+        <!-- Bộ nút bấm lọc trạng thái hiển thị -->
+        <div class="filter-controls">
+            <button id="filterAll" class="active">Tất cả</button>
+            <button id="filterActive">Chưa làm</button>
+            <button id="filterCompleted">Đã xong</button>
+        </div>
+
+        <!-- Danh sách hiển thị việc cần làm -->
+        <ul id="todoList"></ul>
+
+        <!-- Thanh thống kê và dọn dẹp cuối trang -->
+        <div class="footer-stats">
+            <span id="itemsLeft">0 items left</span>
+            <button id="clearCompleted">Xóa việc đã xong</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

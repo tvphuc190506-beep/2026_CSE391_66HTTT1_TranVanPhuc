@@ -1,0 +1,24 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body { background-color: #f4f7f6; display: flex; justify-content: center; padding-top: 50px; }
+.todo-wrapper { background: white; width: 400px; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+h2 { margin-bottom: 20px; color: #333; text-align: center; }
+form { display: flex; gap: 10px; margin-bottom: 20px; }
+input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; outline: none; }
+input:focus { border-color: #3182ce; }
+button { padding: 10px 15px; background: #3182ce; color: white; border: none; border-radius: 4px; cursor: pointer; }
+button:hover { background: #2b6cb0; }
+.filter-controls { display: flex; gap: 5px; margin-bottom: 15px; }
+.filter-controls button { flex: 1; padding: 6px; background: #edf2f7; color: #4a5568; font-size: 13px; }
+.filter-controls button.active { background: #3182ce; color: white; }
+ul { list-style: none; margin-bottom: 20px; }
+li { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #edf2f7; background: #fff; transition: background 0.2s; }
+li.completed span { text-decoration: line-through; color: #a0aec0; }
+li .todo-text { cursor: pointer; flex: 1; }
+li .edit-input { width: 100%; padding: 4px; display: none; }
+li.editing .todo-text { display: none; }
+li.editing .edit-input { display: block; }
+.btn-del { background: #e53e3e; padding: 4px 8px; font-size: 12px; }
+.btn-del:hover { background: #c53030; }
+.footer-stats { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #718096; border-top: 1px solid #edf2f7; padding-top: 15px; }
+#clearCompleted { background: #718096; padding: 5px 10px; font-size: 12px; }
+#clearCompleted:hover { background: #4a5568; }
